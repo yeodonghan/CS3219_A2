@@ -2,7 +2,7 @@ version: "3"
 
 services:
   reverse-proxy:
-    image: reverse-proxy
+    image: reverse-proxy-image
     build:
       context: .
     container_name: reverse-proxy
@@ -14,7 +14,7 @@ services:
     restart: on-failure
 
   user-service:
-    image: user-service
+    image: user-service-image
     container_name: user-service
     build:
       context: ./user-service
@@ -23,7 +23,7 @@ services:
     restart: on-failure
 
   contact-service:
-    image: contact-service
+    image: contact-service-image
     container_name: contact-service
     build:
       context: ./contact-service

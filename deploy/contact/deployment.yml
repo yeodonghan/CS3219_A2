@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: contact
+  labels:
+    app: contact
+spec:
+  selector:
+    matchLabels:
+      app: contact
+  template:
+    metadata:
+      name: contact
+      labels:
+        app: contact
+    spec:
+      containers:
+        - name: contact
+          image: contact-service-image
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
