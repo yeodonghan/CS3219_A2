@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  reverse-proxy:
+    image: reverse-proxy
+    build:
+      context: .
+    container_name: reverse-proxy
+    depends_on:
+      - user-service
+      - contact-service
+    ports:
+      - 8080:80
+    restart: on-failure
+
+  user-service:
+    image: user-service
+    container_name: user-service
+    build:
+      context: ./user-service
+    ports:
+      - 8082:8080
+    restart: on-failure
+
+  contact-service:
+    image: contact-service
+    container_name: contact-service
+    build:
+      context: ./contact-service
+    ports:
+      - 8083:8080
+    restart: on-failure
